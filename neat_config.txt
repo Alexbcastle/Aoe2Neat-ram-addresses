@@ -1,0 +1,89 @@
+[NEAT]
+fitness_criterion     = max
+fitness_threshold     = 100000.0
+pop_size              = 100
+reset_on_extinction   = False
+
+[DefaultGenome]
+# Number of inputs and outputs updated for action space
+# Only the predicted state (0 or 1)
+num_inputs            = 5 
+# 8 hotkeys, 2 mouse clicks, 4 mouse movements 
+num_outputs           = 10  
+# Can tune this based on complexity
+num_hidden            = 5  
+initial_connection    = full_nodirect
+
+# Activation functions
+activation_default    = relu
+activation_mutate_rate= 0.1
+activation_options = sigmoid relu tanh 
+
+# Aggregation functions
+aggregation_default   = sum
+
+# Range for network weights and biases
+weight_init_mean      = 0.0
+weight_init_stdev     = 1.0
+response_init_mean    = 0.0 
+response_init_stdev    = 1.0 
+bias_init_mean        = 0.0
+bias_init_stdev       = 1.0
+
+weight_mutate_power   = 0.5
+weight_mutation_rate = 0.1
+weight_mutate_rate = 0.1
+weight_max_value = 5.0
+weight_min_value = -5.0
+bias_mutate_power     = 0.5
+weight_replace_rate   = 0.1
+bias_replace_rate     = 0.1
+
+# Missing parameter added
+# Set a mutation rate for biases
+bias_mutate_rate      = 0.1
+
+# Set a maximum value for biases (adjust as needed)  
+bias_max_value        = 5.0 
+bias_min_value        = -5.0
+         
+# Response value constraints
+response_min_value     = -5.0  
+response_max_value     = 5.0  
+response_replace_rate  = 0.1
+response_mutate_rate   = 0.1
+response_mutate_power = 0.1
+aggregation_mutate_rate = 0.1
+
+
+# Specify if the genome is feed forward or recurrent
+feed_forward = True  
+
+# Enable recurrent networks and their mutation rates
+enabled_default       = False
+
+# Compatibility coefficients
+# Disjoint coefficient
+compatibility_disjoint_coefficient = 1.0  
+# Weight coefficient
+compatibility_weight_coefficient = 1.0     
+# Compatibility threshold
+compatibility_threshold = 3.0               
+
+enabled_mutate_rate   = 0.01
+conn_add_prob         = 0.2
+conn_delete_prob      = 0.2
+node_add_prob         = 0.05
+node_delete_prob      = 0.05
+
+[DefaultSpeciesSet]
+compatibility_threshold = 3.0
+
+[DefaultStagnation]
+species_fitness_func = max
+max_stagnation       = 20
+species_elitism      = 2
+
+[DefaultReproduction]
+elitism              = 2
+survival_threshold   = 0.2
